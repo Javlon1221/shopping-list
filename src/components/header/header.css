@@ -1,0 +1,78 @@
+.header{
+    width: 100%;
+    padding: 5px;
+    height: 60px;
+    box-shadow: 0 0 5px;
+    position: sticky;
+}
+.logo{
+    width: 40px;
+    height: 40px;
+}
+
+.navbar_logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.navbar{
+    display: flex;
+    justify-content:space-between ;
+    align-items: center;
+}
+.navbar_inputSearch{
+    width: 600px;
+    height: 50px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #ddd;
+    text-indent: 15px;
+    transition: .3s;
+}
+.navbar_inputSearch:hover{
+    border-color: #aaa;
+    box-shadow: 0 0 5px #aaa;
+}
+
+
+.navbar_button{
+    padding: 6px 24px;
+    border:none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+    background: dodgerblue;
+    transition: .3s;
+}
+.navbar_button:hover{
+    background: deepskyblue;
+    transform: scale(1.1);
+}
+
+.navbar_item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.navbar_itemch{
+    padding: 5px;
+    font-size: 20px;
+    background: inherit;
+    border: none;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.navbar_itemch:hover {
+    background: #f0f0f0;
+    transform: scale(1.05);
+    color: dodgerblue;
+    box-shadow: 0 0 5px #ddd;
+}

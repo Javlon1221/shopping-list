@@ -1,0 +1,96 @@
+/* Login.css */
+.auth-page {
+  background-color: #6b737c;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-container {
+  display: flex;
+  width: 850px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.auth-left {
+  background-color: #1f1f1f;
+  color: white;
+  width: 50%;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.auth-logo {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.auth-left p {
+  margin: 0;
+  font-size: 14px;
+  color: #bbb;
+}
+
+.auth-left h1 {
+  font-size: 38px;
+  margin: 10px 0 0;
+  font-weight: normal;
+}
+
+.auth-right {
+  background-color: #fff;
+  width: 50%;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-right h2 {
+  text-align: center;
+  color: #1677ff;
+  margin-bottom: 20px;
+}
+
+.auth-right form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-right label {
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.auth-right input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.btn-auth {
+  background-color: #1677ff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.auth-switch {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
