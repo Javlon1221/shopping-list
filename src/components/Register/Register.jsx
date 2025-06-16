@@ -1,4 +1,3 @@
-// Register.jsx
 import React, { useState } from 'react';
 import './Register.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -18,10 +17,13 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Hozircha oddiy token yozamiz (real loyihada serverga yuboriladi)
-    if (form.name && form.username && form.password) {
-      localStorage.setItem('token', 'user_token');
-      navigate('/'); 
+    const { name, username, password } = form;
+
+    if (name && username && password) {
+      const user = { name, username, password };
+      localStorage.setItem('user', JSON.stringify(user));
+      alert('Ro‘yxatdan o‘tildi! Endi login qiling.');
+      navigate('/login');
     } else {
       alert('Iltimos, barcha maydonlarni to‘ldiring.');
     }

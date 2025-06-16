@@ -8,6 +8,7 @@ import NotFound from './components/404/NotFound';
 import Profile from './components/profile/Profile';
 import CreateGroup from './components/CreateGroup/CreateGroup';
 
+
 const isAuthenticated = localStorage.getItem('token');
 
 const PrivateRoute = ({ children }) => {
@@ -21,7 +22,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Protected Routes */}
+        
         <Route
           path="/"
           element={
@@ -36,7 +37,6 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
 
-        {/* Catch-all for unknown routes */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

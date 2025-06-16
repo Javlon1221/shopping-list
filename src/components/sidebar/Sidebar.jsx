@@ -1,64 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
-import { IoChatbubble } from "react-icons/io5";
+import { IoChatbubble } from 'react-icons/io5';
+import { FaBars } from 'react-icons/fa'; // toggle ikonkasi
 
 const Sidebar = () => {
   const [showGroups, setShowGroups] = useState(false);
-  const [showCreateForm, setShowCreateForm] = useState(false);
-  const [groupName, setGroupName] = useState('');
-  const [groupPassword, setGroupPassword] = useState('');
+  const [groupList, setGroupList] = useState([]);
+  const [showSidebar, setShowSidebar] = useState(false);
 
-  const handleCreateGroup = () => {
-    if (groupName.trim() && groupPassword.trim()) {
-      alert(`Group created!\nName: ${groupName}\nPassword: ${groupPassword}`);
-      setGroupName('');
-      setGroupPassword('');
-      setShowCreateForm(false);
-    } else {
-      alert("Iltimos, barcha maydonlarni to'ldiring.");
-    }
-  };
+  useEffect(() => {
+    const savedGroups = JSON.parse(localStorage.getItem('groups')) || [];
+    setGroupList(savedGroups);
+  }, []);
 
   return (
-    <div className="sidebar">
-      <Link to="/profile" className="menu-item active">
-        <span role="img" aria-label="user">👤</span> Profile
-      </Link>
+    <>
+      {/* Toggle button faqat kichik ekranlarda ko'rinadi */}
+      <button className="menu-toggle" onClick={() => setShowSidebar(!showSidebar)}>
+        <FaBars />
+      </button>
 
-      <div className="menu-item" onClick={() => setShowGroups(!showGroups)}>
-        <span role="img" aria-label="groups">
-          <IoChatbubble />
-        </span> Groups
-        <span className="arrow">{showGroups ? '▲' : '▼'}</span>
-      </div>
+      <div className={`sidebar ${showSidebar ? 'show' : ''}`}>
+        <Link to="/profile" className="menu-item active" onClick={() => setShowSidebar(false)}>
+          <span role="img" aria-label="user">👤</span> Profile
+        </Link>
 
-      {showGroups && (
-        <div className="group-list">
-          <div className="menu-item sub" onClick={() => setShowCreateForm(!showCreateForm)}>
-            <span role="img" aria-label="plus">➕</span> Create Group
-          </div>
-
-          {showCreateForm && (
-            <div className="create-form">
-              <input
-                type="text"
-                placeholder="Group Name"
-                value={groupName}
-                onChange={(e) => setGroupName(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                value={groupPassword}
-                onChange={(e) => setGroupPassword(e.target.value)}
-              />
-              <button onClick={handleCreateGroup}>Create</button>
-            </div>
-          )}
+        <div className="menu-item" onClick={() => setShowGroups(!showGroups)}>
+          <span className="icon">
+            <IoChatbubble />
+          </span> Groups
+          <span className="arrow">{showGroups ? '▲' : '▼'}</span>
         </div>
-      )}
-    </div>
+
+        {showGroups && (
+          <div className="group-list">
+            <Link to="/create-group" className="menu-item sub" onClick={() => setShowSidebar(false)}>
+              <span role="img" aria-label="plus">➕</span> Create Group
+            </Link>
+
+            {groupList.length > 0 && (
+              <div className="created-groups">
+                {groupList.map((group, idx) => (
+                  <div key={idx} className="group-item">
+                    📌 {group.name}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -1,4 +1,3 @@
-// Login.jsx
 import React, { useState } from 'react';
 import './Login.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,12 +13,22 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (form.username && form.password) {
-      
+    const savedUser = JSON.parse(localStorage.getItem('user'));
+
+    if (!savedUser) {
+      alert("Iltimos, avval ro‘yxatdan o‘ting.");
+      return;
+    }
+
+    if (
+      form.username === savedUser.username &&
+      form.password === savedUser.password
+    ) {
       localStorage.setItem('token', 'user_token');
+      localStorage.setItem('username', savedUser.username);
       navigate('/');
     } else {
-      alert("Iltimos, foydalanuvchi nomi va parolni to‘ldiring.");
+      alert("Login yoki parol noto‘g‘ri!");
     }
   };
 
