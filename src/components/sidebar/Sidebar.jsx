@@ -12,7 +12,6 @@ const Sidebar = () => {
   const handleCreateGroup = () => {
     if (groupName.trim() && groupPassword.trim()) {
       alert(`Group created!\nName: ${groupName}\nPassword: ${groupPassword}`);
-      // Bu yerda backendga yuborish yoki local saqlash mumkin
       setGroupName('');
       setGroupPassword('');
       setShowCreateForm(false);

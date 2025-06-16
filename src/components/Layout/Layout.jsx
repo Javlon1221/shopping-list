@@ -1,14 +1,18 @@
-// Layout.jsx
 import React from 'react';
-import Sidebar from './../sidebar/Sidebar';
 import { Outlet } from 'react-router-dom';
+import Header from '../header/Header';
+import Sidebar from '../sidebar/Sidebar';
+import './layout.css';
 
 const Layout = () => {
   return (
-    <div style={{ display: 'flex' }}>
-      <Sidebar />
-      <div style={{ flexGrow: 1, padding: '20px' }}>
-        <Outlet />
+    <div className="layout">
+      <Header />
+      <div className="main-content">
+        <Sidebar />
+        <div className="page-content">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

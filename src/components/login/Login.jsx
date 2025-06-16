@@ -1,8 +1,28 @@
-import React from 'react';
+// Login.jsx
+import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [form, setForm] = useState({ username: '', password: '' });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (form.username && form.password) {
+      
+      localStorage.setItem('token', 'user_token');
+      navigate('/');
+    } else {
+      alert("Iltimos, foydalanuvchi nomi va parolni to‘ldiring.");
+    }
+  };
+
   return (
     <div className="auth-page">
       <div className="auth-container">
@@ -13,16 +33,30 @@ const Login = () => {
         </div>
         <div className="auth-right">
           <h2>Sign In</h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <label>Username</label>
-            <input type="text" placeholder="eshmatjon123" />
+            <input
+              type="text"
+              name="username"
+              placeholder="eshmatjon123"
+              value={form.username}
+              onChange={handleChange}
+            />
 
             <label>Password</label>
-            <input type="password" placeholder="******" />
+            <input
+              type="password"
+              name="password"
+              placeholder="******"
+              value={form.password}
+              onChange={handleChange}
+            />
 
             <button className="btn-auth" type="submit">Sign In</button>
           </form>
-          <p className="auth-switch">No account yet? <Link to="/register">Create One.</Link></p>
+          <p className="auth-switch">
+            No account yet? <Link to="/register">Create One.</Link>
+          </p>
         </div>
       </div>
     </div>

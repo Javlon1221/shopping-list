@@ -1,4 +1,3 @@
-// pages/CreateGroup.jsx
 import React, { useState } from 'react';
 
 const CreateGroup = () => {
