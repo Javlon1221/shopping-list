@@ -121,7 +121,9 @@
   }
 }
 
-/* Mobilga moslashuv */
+
+
+
 @media (max-width: 768px) {
   .profile-header {
     flex-direction: column;
