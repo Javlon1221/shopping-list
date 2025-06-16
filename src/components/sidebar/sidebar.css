@@ -101,6 +101,28 @@
   z-index: 1001;
 }
 
+.group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  animation: fadeInLeft 0.4s ease both;
+}
+
+.delete-icon {
+  color: #ff4d4d;
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.delete-icon:hover {
+  transform: scale(1.1);
+  color: #e60000;
+}
+
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;

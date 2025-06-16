@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
 import { IoChatbubble } from 'react-icons/io5';
-import { FaBars } from 'react-icons/fa'; 
+import { FaBars, FaTrash } from 'react-icons/fa';
 
 const Sidebar = () => {
   const [showGroups, setShowGroups] = useState(false);
@@ -13,6 +13,12 @@ const Sidebar = () => {
     const savedGroups = JSON.parse(localStorage.getItem('groups')) || [];
     setGroupList(savedGroups);
   }, []);
+
+  const handleDeleteGroup = (index) => {
+    const updatedGroups = groupList.filter((_, i) => i !== index);
+    setGroupList(updatedGroups);
+    localStorage.setItem('groups', JSON.stringify(updatedGroups));
+  };
 
   return (
     <>
@@ -33,7 +39,7 @@ const Sidebar = () => {
         </div>
 
         {showGroups && (
-          <div className="group-list">
+          <div className="group-list show">
             <Link to="/create-group" className="menu-item sub" onClick={() => setShowSidebar(false)}>
               <span role="img" aria-label="plus">➕</span> Create Group
             </Link>
@@ -43,6 +49,11 @@ const Sidebar = () => {
                 {groupList.map((group, idx) => (
                   <div key={idx} className="group-item">
                     📌 {group.name}
+                    <FaTrash
+                      className="delete-icon"
+                      title="Delete group"
+                      onClick={() => handleDeleteGroup(idx)}
+                    />
                   </div>
                 ))}
               </div>
