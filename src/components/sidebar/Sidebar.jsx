@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './sidebar.css';
 import { IoChatbubble } from 'react-icons/io5';
-import { FaBars } from 'react-icons/fa'; // toggle ikonkasi
+import { FaBars } from 'react-icons/fa'; 
 
 const Sidebar = () => {
   const [showGroups, setShowGroups] = useState(false);
@@ -16,7 +16,6 @@ const Sidebar = () => {
 
   return (
     <>
-      {/* Toggle button faqat kichik ekranlarda ko'rinadi */}
       <button className="menu-toggle" onClick={() => setShowSidebar(!showSidebar)}>
         <FaBars />
       </button>
