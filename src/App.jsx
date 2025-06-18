@@ -7,6 +7,7 @@ import Register from './components/Register/Register';
 import NotFound from './components/404/NotFound';
 import Profile from './components/profile/Profile';
 import CreateGroup from './components/CreateGroup/CreateGroup';
+import Group from './components/pages/Group';
 
 
 const isAuthenticated = localStorage.getItem('token');
@@ -17,29 +18,34 @@ const PrivateRoute = ({ children }) => {
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+    <>
+    
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-        
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Layout />
-            </PrivateRoute>
-          }
-        >
-          <Route index element={<h1>Welcome to Home</h1>} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="create-group" element={<CreateGroup />} />
+          
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <Layout />
+              </PrivateRoute>
+            }
+          >
+            <Route index element={<h1>Welcome to Home</h1>} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="create-group" element={<CreateGroup />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
-        </Route>
+        </Routes>
+      </Router>
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+      <Group/>
+    </>
   );
 };
 

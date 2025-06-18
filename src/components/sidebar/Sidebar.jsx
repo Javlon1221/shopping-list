@@ -43,7 +43,12 @@ const Sidebar = () => {
             <Link to="/create-group" className="menu-item sub" onClick={() => setShowSidebar(false)}>
               <span role="img" aria-label="plus">➕</span> Create Group
             </Link>
+            <Link to="/group" className="menu-item sub" onClick={() => setShowSidebar(false)}>
+              <span role="img" aria-label="view">👀</span> View Groups
+            </Link>
+            
 
+          
             {groupList.length > 0 && (
               <div className="created-groups">
                 {groupList.map((group, idx) => (
